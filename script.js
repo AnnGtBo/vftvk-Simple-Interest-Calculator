@@ -41,14 +41,25 @@ function checkValidity(){
     var t = document.getElementById("years").value;
     var p = document.getElementById("principal").value;
     var valid = true;
-    if (t < 0 || t == "") {
-        valid = false;
-        document.getElementById("years").focus();
-    }
-
     if (p<0 || p == "") {
+        alert("the amount must be positive number")
         valid = false;
         document.getElementById("principal").focus();   
     }
+    else {
+        if (t < 0 || t == "") {
+            alert("please enter valid number of years")
+            document.getElementById("years").focus();
+            valid = false;
+            
+        }
+    }
+
+
+
+    
+
+ 
     return valid;
+
 }
