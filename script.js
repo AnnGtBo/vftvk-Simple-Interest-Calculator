@@ -1,3 +1,19 @@
+
+function updateTextInputRate(val) {
+    document.getElementById('rateLable').innerText = val + "%"; 
+    return true;
+}
+     
+
+/*
+A = Total Accrued Amount (principal + interest)
+P = Principal Amount
+I = Interest Amount
+r = Rate of Interest per year in decimal; r = R/100
+R = Rate of Interest per year as a percent; R = r * 100
+t = Time Period involved in months or years
+A = P(1 + rt) 
+*/
 function compute()
 {
     var p = document.getElementById("principal").value;
@@ -9,27 +25,30 @@ function compute()
     const d = new Date();
     var yearOfpayment = parseInt(t) + d.getFullYear();
 
-    var strResult = "if you deposit " + '<span style = "background-color : yellow">' + p + '</span>' + ',<br>' +
-    "at an interest rate of " + '<span style = "background-color : yellow">' + R + "%"+ '</span>' + ',<br>' + 
-    "You will recieve an amount of " + '<span style = "background-color : yellow">' + I + '</span>' + ',<br>' + 
-    "in the year " + '<span style = "background-color : yellow">' + yearOfpayment + '</span>';
+    if (checkValidity()) {
+        var strResult = "if you deposit " + '<span style = "background-color : yellow">' + p + '</span>' + ',<br>' +
+        "at an interest rate of " + '<span style = "background-color : yellow">' + R + "%"+ '</span>' + ',<br>' + 
+        "You will recieve an amount of " + '<span style = "background-color : yellow">' + I + '</span>' + ',<br>' + 
+        "in the year " + '<span style = "background-color : yellow">' + yearOfpayment + '</span>';
 
-    result.innerHTML = strResult;
-    /*"the result is bold : " + '<b>' + A + '</b>'+ " the resolt is regular : "+   A + "  and fuck you"; /*"If you deposit" + p + "," + <br/> + "at an interest rate of";*/ 
+        result.innerHTML = strResult;
+    }
     return true;
- 
 }
-        
-/*
-A = Total Accrued Amount (principal + interest)
-P = Principal Amount
-I = Interest Amount
-r = Rate of Interest per year in decimal; r = R/100
-R = Rate of Interest per year as a percent; R = r * 100
-t = Time Period involved in months or years
 
-A = P(1 + rt) 
+function checkValidity(){
 
+    var t = document.getElementById("years").value;
+    var p = document.getElementById("principal").value;
+    var valid = true;
+    if (t < 0 || t == "") {
+        valid = false;
+        document.getElementById("years").focus();
+    }
 
-
-*/
+    if (p<0 || p == "") {
+        valid = false;
+        document.getElementById("principal").focus();   
+    }
+    return valid;
+}

@@ -1,4 +1,16 @@
 body {background-color:white;}
 h1{color:grey;}
+.tab { margin-left: 40px; }
+.Indent { margin-left: 5%; }
+#text{
+    padding: 0 0 0 5%;
 
+}
+#years {
+    width: 4em;
+  }
+
+  #principal {
+    width: 10em;
+  }
 
