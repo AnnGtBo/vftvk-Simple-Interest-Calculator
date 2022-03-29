@@ -41,7 +41,7 @@ function checkValidity(){
     var t = document.getElementById("years").value;
     var p = document.getElementById("principal").value;
     var valid = true;
-    if (p<0 || p == "") {
+    if (p<=0 || p == "") {
         alert("the amount must be positive number")
         valid = false;
         document.getElementById("principal").focus();   
